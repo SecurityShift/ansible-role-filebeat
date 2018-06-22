@@ -1,0 +1,29 @@
+---
+# tasks file for filebeat
+
+- name: Subscribe to required channels
+  import_role:
+    name: spacewalk-client
+    tasks_from: channel.yml
+  vars:
+    channels: '{{ filebeat_rhn_channels }}'
+
+- name: Install required packages
+  yum:
+    name: '{{ item }}'
+    state: installed
+  with_items:
+    - filebeat
+  tags:
+    - install
+
+- name: Copy Filebeat configuration.
+  template:
+    src: filebeat.yml.j2
+    dest: "/etc/filebeat/filebeat.yml"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart filebeat
+
+
