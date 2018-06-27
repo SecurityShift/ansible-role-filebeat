@@ -26,4 +26,12 @@
     mode: 0644
   notify: restart filebeat
 
+- name: Ensure services
+  service:
+    name: filebeat
+    state: started
+    enabled: true
+  tags:
+    - service
+
 
