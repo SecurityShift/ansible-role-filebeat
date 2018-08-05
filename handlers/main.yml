@@ -5,3 +5,4 @@
   service:
     name: filebeat
     state: restarted
+  when: no_restart is not defined and not no_restart
