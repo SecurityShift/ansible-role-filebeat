@@ -1,6 +1,8 @@
 ---
 # defaults file for filebeat
 
+filebeat_role_git_repo: https://github.com/SecurityShift/ansible-role-filebeat
+
 filebeat_rhn_channels:
   - filebeat-x86_64
 
