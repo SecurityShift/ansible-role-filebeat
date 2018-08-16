@@ -2,7 +2,7 @@ galaxy_info:
   author: Ben O'Hara
   description: Install and configure filebeat
   company: SecurityShift
-  issue_tracker_url: http://example.com/issue/tracker
+  issue_tracker_url: https://github.com/SecurityShift/ansible-role-filebeat/issues
   license: BSD
   min_ansible_version: 2.5
   platforms:
