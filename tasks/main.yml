@@ -10,10 +10,9 @@
 
 - name: Install required packages
   yum:
-    name: '{{ item }}'
+    name: 'filebeat'
     state: installed
-  with_items:
-    - filebeat
+  notify: update aide
   tags:
     - install
 
@@ -24,13 +23,16 @@
     owner: root
     group: root
     mode: 0644
-  notify: restart filebeat
+  notify:
+    - restart filebeat
+    - update aide
 
 - name: Ensure services
   service:
     name: filebeat
     state: started
     enabled: true
+  notify: update aide
   tags:
     - service
 
